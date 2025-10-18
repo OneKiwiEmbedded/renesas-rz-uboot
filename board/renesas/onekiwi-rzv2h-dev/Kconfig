@@ -1,0 +1,15 @@
+if TARGET_ONEKIWI_RZV2H_DEV
+
+config SYS_SOC
+	default "rmobile"
+
+config SYS_BOARD
+	default "onekiwi-rzv2h-dev"
+
+config SYS_VENDOR
+	default "renesas"
+
+config SYS_CONFIG_NAME
+	default "onekiwi-rzv2h-dev"
+
+endif
