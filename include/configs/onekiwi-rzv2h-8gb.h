@@ -3,8 +3,8 @@
  * Copyright (C) 2022 Renesas Electronics Corporation
  */
 
-#ifndef __ONEKIWI_RZV2H_DEV_H
-#define __ONEKIWI_RZV2H_DEV_H
+#ifndef __ONEKIWI_RZV2H_8GB_H
+#define __ONEKIWI_RZV2H_8GB_H
 
 #include <asm/arch/rmobile.h>
 
@@ -67,11 +67,11 @@
 	"prodsd1bootargs=setenv bootargs rw rootwait earlycon root=/dev/mmcblk1p2 \0" \
 	"produsbbootargs=setenv bootargs rw rootwait earlycon root=/dev/sda2 \0" \
 	"bootimage=booti 0x48080000 - 0x48000000 \0" \
-	"emmcload=ext4load mmc 0:2 0x48080000 boot/Image;ext4load mmc 0:2 0x48000000 boot/onekiwi-rzv2h-dev.dtb;run prodemmcbootargs \0" \
-	"sd0load=ext4load mmc 0:2 0x48080000 boot/Image;ext4load mmc 0:2 0x48000000 boot/onekiwi-rzv2h-dev.dtb;run prodsd0bootargs \0" \
-	"sd1load=ext4load mmc 1:2 0x48080000 boot/Image;ext4load mmc 1:2 0x48000000 boot/onekiwi-rzv2h-dev.dtb;run prodsd1bootargs \0" \
+	"emmcload=ext4load mmc 0:2 0x48080000 boot/Image;ext4load mmc 0:2 0x48000000 boot/onekiwi-rzv2h-8gb.dtb;run prodemmcbootargs \0" \
+	"sd0load=ext4load mmc 0:2 0x48080000 boot/Image;ext4load mmc 0:2 0x48000000 boot/onekiwi-rzv2h-8gb.dtb;run prodsd0bootargs \0" \
+	"sd1load=ext4load mmc 1:2 0x48080000 boot/Image;ext4load mmc 1:2 0x48000000 boot/onekiwi-rzv2h-8gb.dtb;run prodsd1bootargs \0" \
 	"bootusb=usb start; run usbload; run bootimage \0" \
-	"usbload=ext4load usb 0:2 0x48080000 boot/Image;ext4load usb 0:2 0x48000000 boot/onekiwi-rzv2h-dev.dtb;run produsbbootargs \0" \
+	"usbload=ext4load usb 0:2 0x48080000 boot/Image;ext4load usb 0:2 0x48000000 boot/onekiwi-rzv2h-8gb.dtb;run produsbbootargs \0" \
 	"bootcmd_check=if mmc dev 1; then run sd1load; else run emmcload; fi \0"
 
 #define CONFIG_BOOTCOMMAND	"env default -a;run bootcmd_check;run bootimage"
@@ -80,4 +80,4 @@
 /* Ethernet RAVB */
 #define CONFIG_BITBANGMII_MULTI
 
-#endif /* __ONEKIWI_RZV2H_DEV_H */
+#endif /* __ONEKIWI_RZV2H_8GB_H */
