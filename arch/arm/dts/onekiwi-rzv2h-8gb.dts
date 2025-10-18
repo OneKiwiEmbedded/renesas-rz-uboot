@@ -12,8 +12,8 @@
 #include "r9a09g057-u-boot.dtsi"
 
 / {
-	model = "OneKiwi RZ/V2H SOM based on r9a09g057h4";
-	compatible = "onekiwi,rzv2h-onekiwi", "renesas,r9a09g057h4-dev", "renesas,r9a09g057h4", "renesas,r9a09g057";
+	model = "OneKiwi RZ/V2H 8GB";
+	compatible = "onekiwi,onekiwi-rzv2h-8gb", "renesas,r9a09g057h4-dev", "renesas,r9a09g057h4", "renesas,r9a09g057";
 
 	aliases {
 		serial0 = &scif0;
