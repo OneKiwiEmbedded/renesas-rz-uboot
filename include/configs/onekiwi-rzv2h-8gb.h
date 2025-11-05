@@ -66,9 +66,6 @@
 	"ocabin=OpenCV_Bin.bin \0"  \
 	"codaddr=0xC7D00000 \0"     \
 	"codbin=Codec_Bin.bin \0"   \
-	"emmcloadbin=ext4load mmc 0:2 ${ocaaddr} boot/${ocabin}; ext4load mmc 0:2 ${codaddr} boot/${codbin} \0" \
-	"sd1loadbin=ext4load mmc 1:2 ${ocaaddr} boot/${ocabin}; ext4load mmc 1:2 ${codaddr} boot/${codbin} \0" \
-	"usbloadbin=ext4load usb 0:2 ${ocaaddr} boot/${ocabin}; ext4load usb 0:2 ${codaddr} boot/${codbin} \0" \
 	"prodemmcbootargs=setenv bootargs rw rootwait earlycon root=/dev/mmcblk0p2 \0" \
 	"prodsd0bootargs=setenv bootargs rw rootwait earlycon root=/dev/mmcblk0p2 \0" \
 	"prodsd1bootargs=setenv bootargs rw rootwait earlycon root=/dev/mmcblk1p2 \0" \
@@ -77,9 +74,9 @@
 	"emmcloadx=ext4load mmc 0:2 0x48080000 boot/Image;ext4load mmc 0:2 0x48000000 boot/onekiwi-rzv2h-8gb.dtb;run prodemmcbootargs \0" \
 	"sd0loadx=ext4load mmc 0:2 0x48080000 boot/Image;ext4load mmc 0:2 0x48000000 boot/onekiwi-rzv2h-8gb.dtb;run prodsd0bootargs \0" \
 	"sd1loadx=ext4load mmc 1:2 0x48080000 boot/Image;ext4load mmc 1:2 0x48000000 boot/onekiwi-rzv2h-8gb.dtb;run prodsd1bootargs \0" \
-	"sd1load=sd1loadbin; ext4load mmc 1:2 0x48080000 boot/Image;ext4load mmc 1:2 0x48000000 boot/onekiwi-rzv2h-8gb.dtb;run prodsd1bootargs \0" \
-	"emmcload=emmcloadbin; ext4load mmc 0:2 0x48080000 boot/Image;ext4load mmc 0:2 0x48000000 boot/onekiwi-rzv2h-8gb.dtb;run prodsd1bootargs \0" \
-	"usbload=usbloadbin; ext4load usb 0:2 0x48080000 boot/Image;ext4load usb 0:2 0x48000000 boot/onekiwi-rzv2h-8gb.dtb;run produsbbootargs \0" \
+	"sd1load=ext4load mmc 1:2 ${ocaaddr} boot/${ocabin}; ext4load mmc 1:2 ${codaddr} boot/${codbin}; ext4load mmc 1:2 0x48080000 boot/Image;ext4load mmc 1:2 0x48000000 boot/onekiwi-rzv2h-8gb.dtb;run prodsd1bootargs \0" \
+	"emmcload=ext4load mmc 0:2 ${ocaaddr} boot/${ocabin}; ext4load mmc 0:2 ${codaddr} boot/${codbin}; ext4load mmc 0:2 0x48080000 boot/Image;ext4load mmc 0:2 0x48000000 boot/onekiwi-rzv2h-8gb.dtb;run prodsd1bootargs \0" \
+	"usbload=ext4load usb 0:2 ${ocaaddr} boot/${ocabin}; ext4load usb 0:2 ${codaddr} boot/${codbin}; ext4load usb 0:2 0x48080000 boot/Image;ext4load usb 0:2 0x48000000 boot/onekiwi-rzv2h-8gb.dtb;run produsbbootargs \0" \
 	"bootusb=usb start; run usbload; run bootimage \0" \
 	"usbloadx=ext4load usb 0:2 0x48080000 boot/Image;ext4load usb 0:2 0x48000000 boot/onekiwi-rzv2h-8gb.dtb;run produsbbootargs \0" \
 	"bootcmd_check=if mmc dev 1; then run sd1load; else run emmcload; fi \0"

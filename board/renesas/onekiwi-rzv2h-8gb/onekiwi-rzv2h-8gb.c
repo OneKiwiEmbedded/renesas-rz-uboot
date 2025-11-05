@@ -20,7 +20,6 @@
 #include <i2c.h>
 #include <mmc.h>
 #include <linux/delay.h>
-#include <onekiwi_logo.h>
 
 DECLARE_GLOBAL_DATA_PTR;
 
@@ -310,14 +309,13 @@ int board_early_init_f(void)
 
 int board_init(void)
 {
-	puts(onekiwi_logo);
 	/* adress of boot parameters */
 	gd->bd->bi_boot_params = CONFIG_SYS_TEXT_BASE + 0x50000;
 
 	board_usb_init();
 
 	/* Initialize PMIC I2C devices */
-	board_pmic_i2c_init();
+	//board_pmic_i2c_init();
 
 	return 0;
 }
